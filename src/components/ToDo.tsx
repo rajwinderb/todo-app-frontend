@@ -2,7 +2,7 @@ interface ToDoProps {
   todo: string;
 }
 
-export default function ToDo(props: ToDoProps) {
+export default function ToDo(props: ToDoProps): JSX.Element {
   return (
     <div className="ToDo">
       <input type="checkbox" />
