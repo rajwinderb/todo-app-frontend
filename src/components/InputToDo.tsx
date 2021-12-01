@@ -18,6 +18,7 @@ export default function InputToDo(props: Props): JSX.Element {
       .then(function (response) {
         props.loadAllToDos();
         console.log(response);
+        setToDoDescription("");
       })
       .catch(function (error) {
         console.log(error);

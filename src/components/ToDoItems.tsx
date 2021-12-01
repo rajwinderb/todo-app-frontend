@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ToDoItems(props: Props): JSX.Element {
-  const episodeElements = props.allToDos.map((singleToDo, index) => (
+  const toDoElements = props.allToDos.map((singleToDo) => (
     <ToDo
       key={singleToDo.id}
       todo={singleToDo}
@@ -19,7 +19,7 @@ export default function ToDoItems(props: Props): JSX.Element {
   return (
     <Fragment>
       <table className="table">
-        <tbody>{episodeElements}</tbody>
+        <tbody>{toDoElements}</tbody>
       </table>
     </Fragment>
   );
