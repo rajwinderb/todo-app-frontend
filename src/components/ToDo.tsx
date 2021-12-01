@@ -20,6 +20,20 @@ export default function ToDo(props: Props): JSX.Element {
       });
   };
 
+  const handleDoneChange = async () => {
+    axios
+      .patch(`${API_BASE}todos/${props.todo.id}`, {
+        done: !props.todo.done,
+      })
+      .then((response) => {
+        props.loadAllToDos();
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <tr>
       <td>
@@ -28,6 +42,8 @@ export default function ToDo(props: Props): JSX.Element {
           type="checkbox"
           value=""
           id="flexCheckDefault"
+          checked={props.todo.done}
+          onChange={handleDoneChange}
         />
       </td>
       <td>{props.todo.todo}</td>
