@@ -2,7 +2,11 @@ import { useState } from "react";
 import { API_BASE } from "../utils/APIFragments";
 import axios from "axios";
 
-export default function InputToDo(): JSX.Element {
+interface Props {
+  loadAllToDos: () => void;
+}
+
+export default function InputToDo(props: Props): JSX.Element {
   const [toDoDescription, setToDoDescription] = useState<string>("");
 
   const handleAddToDo = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -12,12 +16,12 @@ export default function InputToDo(): JSX.Element {
         todo: toDoDescription,
       })
       .then(function (response) {
+        props.loadAllToDos();
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
-    setToDoDescription("");
   };
 
   return (
@@ -31,7 +35,7 @@ export default function InputToDo(): JSX.Element {
         value={toDoDescription}
         onChange={(e) => setToDoDescription(e.target.value)}
       />
-      <button type="button" className="btn btn-success">
+      <button type="submit" className="btn btn-success">
         Add
       </button>
     </form>

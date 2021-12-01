@@ -1,10 +1,26 @@
+import { Fragment } from "react";
+import { IToDo } from "../utils/todoInterface";
 import ToDo from "./ToDo";
 
-export default function ToDoItems(): JSX.Element {
+interface Props {
+  allToDos: IToDo[];
+  loadAllToDos: () => void;
+}
+
+export default function ToDoItems(props: Props): JSX.Element {
+  const episodeElements = props.allToDos.map((singleToDo, index) => (
+    <ToDo
+      key={singleToDo.id}
+      todo={singleToDo}
+      loadAllToDos={props.loadAllToDos}
+    />
+  ));
+
   return (
-    <section className="ToDoItems">
-      <ToDo todo={"eat"} />
-      <ToDo todo={"shopping"} />
-    </section>
+    <Fragment>
+      <table className="table">
+        <tbody>{episodeElements}</tbody>
+      </table>
+    </Fragment>
   );
 }
