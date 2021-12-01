@@ -28,18 +28,6 @@ function App(): JSX.Element {
     }
   }, [isFirstLoad]);
 
-  // const handleIsCompleteToggle = async (
-  //   todoId: number,
-  //   currentCompletedValue: boolean
-  // ) => {
-  //   await axios
-  //     .patch(`${API_BASE}todos/${todoId}`, {
-  //       completed: !currentCompletedValue,
-  //     })
-  //     .then((res) => handleUpdateTodosAfterEditing(res.data.data.todo))
-  //     .catch((error) => console.log(error));
-  // };
-
   return (
     <Fragment>
       <AppHeader />
