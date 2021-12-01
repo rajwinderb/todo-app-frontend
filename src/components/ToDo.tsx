@@ -1,4 +1,5 @@
 import axios from "axios";
+import EditTodo from "./EditToDo";
 import { API_BASE } from "../utils/APIFragments";
 import { IToDo } from "../utils/todoInterface";
 
@@ -48,9 +49,7 @@ export default function ToDo(props: Props): JSX.Element {
       </td>
       <td>{props.todo.todo}</td>
       <td>
-        <button type="button" className="btn btn-success">
-          Edit
-        </button>
+        <EditTodo todo={props.todo} loadAllToDos={props.loadAllToDos} />
       </td>
       <td>
         <button
